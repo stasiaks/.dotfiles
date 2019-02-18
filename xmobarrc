@@ -1,10 +1,10 @@
-Config {  font = "xft:Open Sans:size=9,WenQuanYi Zen Hei:size=9, FontAwesome:size=12"
+Config  { font = "xft:SFNS Display:size=10,FontAwesome5Free:style=Solid:size=10"
 	, borderColor = "black"
 	, border = TopB
 	, bgColor = "black"
 	, fgColor = "grey"
 	, position = TopW L 100
-	, commands = [ Run Network "wlp4s0" [ "-t", " <rx>KB|  <tx>KB", "-L","0","-H","768000","--normal","green","--high","red"] 10
+	, commands = [ Run DynNetwork [ "--template", " <rx>KB|  <tx>KB", "--Low","0","--High","768000","--low" , "green", "--normal","darkorange", "--high","red"] 10
 			, Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
 			, Run Memory ["-t","Mem: <usedratio>%"] 10
 			, Run Com "uname" ["-s","-r"] "" 36000
