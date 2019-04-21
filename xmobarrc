@@ -1,11 +1,10 @@
-Config  { font = "xft:SFNS Display:size=10,FontAwesome5Free:style=Solid:size=10"
+Config  { font = "xft:SFNS Display:size=10,FontAwesome:style=Solid:size=10"
 	, borderColor = "black"
 	, border = TopB
 	, bgColor = "black"
 	, fgColor = "grey"
 	, position = TopW L 100
-	, commands = [ Run DynNetwork [ "--template", " <rx>KB|  <tx>KB", "--Low","0","--High","768000","--low" , "green", "--normal","darkorange", "--high","red"] 10
-			, Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+	, commands = [ Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
 			, Run Memory ["-t","Mem: <usedratio>%"] 10
 			, Run Com "uname" ["-s","-r"] "" 36000
 			, Run Com "id" ["-u", "-n"] "" 36000
@@ -17,6 +16,6 @@ Config  { font = "xft:SFNS Display:size=10,FontAwesome5Free:style=Solid:size=10"
 			]
 	, sepChar = "%"
 	, alignSep = "}{"
-	, template = "%StdinReader% | %cpu% | %memory% | %wlp4s0% }{  %volumecheck% | %bright% | %battery% | <fc=#ee9a00>%date%</fc> | <fc=#ee2a2a> %id%</fc> | %uname% "
+	, template = "%StdinReader% | %cpu% | %memory% }{  %volumecheck% | %bright% | %battery% | <fc=#ee9a00>%date%</fc> | <fc=#ee2a2a> %id%</fc> | %uname% "
 	}
 
