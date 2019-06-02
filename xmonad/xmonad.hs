@@ -29,7 +29,7 @@ myPP			= xmobarPP
 			, ppTitle		= nostr
 			} where nostr x = ""
 
-myTerminal		= "termite"
+myTerminal		= "urxvt"
 
 myModMask		= mod4Mask
 
