@@ -29,3 +29,7 @@ let g:airline_theme='deus'
 " Language specific
 
 autocmd FileType haskell setlocal expandtab
+
+" Keybinds
+
+inoremap kj <Esc>
