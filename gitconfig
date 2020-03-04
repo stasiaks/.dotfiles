@@ -3,3 +3,19 @@
 	name = Sebastian Stasiak
 [core]
 	editor = vim
+[alias]
+	lg          = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	alias       = !git config --get-regexp '^alias\\.'  \
+	| sed 's/^alias\\.//' \
+	| awk 'BEGIN {printf(\"%12s %s\", \"name\", \"command\\n\")} \
+	       {printf(\"%12s\", $1)} {$1=\"\"} {printf(\"%s\\n\", $0)}'
+	amend       = commit --amend --no-edit
+	branch-name = rev-parse --abbrev-ref HEAD
+	publish     = !git push -u origin $(git branch-name)
+	unpublish   = !git push origin :$(git branch-name)
+	branch-gone = !git branch -v | grep '\\[gone\\]' | awk '{ print $1 }' | tr '\\n' '\\0'
+	clear-gone  = !git branch-gone | xargs -0 -n1 git branch -D
+	fm          = fetch origin master:master
+	mm          = !git fm && git merge master
+	cm          = !git fm && git checkout master
+	nf          = !sh -c 'git checkout -b feature/"$1"' -
