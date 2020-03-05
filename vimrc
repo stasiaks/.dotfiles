@@ -10,6 +10,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'bkad/camelcasemotion'
 
 call vundle#end()
 filetype plugin indent on
@@ -22,13 +23,24 @@ set number
 set statusline+=%#warningmsg#
 set statusline+=%*
 
+" Language specific
+
+autocmd FileType haskell setlocal expandtab
+
 " Airline
 
 let g:airline_theme='deus'
 
-" Language specific
+" CamelCaseMotion
 
-autocmd FileType haskell setlocal expandtab
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
 
 " Keybinds
 
