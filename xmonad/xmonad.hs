@@ -8,26 +8,16 @@ import XMonad.Layout.PerWorkspace
 import XMonad.Layout.SimplestFloat
 import XMonad.Layout.BorderResize
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.SetWMName
 import XMonad.Util.Run
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Actions.Navigation2D
 import Data.List
+import Graphics.X11.ExtraTypes.XF86
 
-main			= xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig 
-
--- Status bar
-
-myBar			= "xmobar"
-
-myPP			= xmobarPP
-			{ ppCurrent		= xmobarColor "#ff9942" ""
-			, ppHiddenNoWindows	= xmobarColor "#444444" ""
-			, ppUrgent		= xmobarColor "#ff2222" ""
-			, ppLayout		= nostr
-			, ppTitle		= nostr
-			} where nostr x = ""
+main			= xmonad . ewmh $ docks $ myConfig 
 
 myTerminal		= "urxvt"
 
@@ -35,10 +25,9 @@ myModMask		= mod4Mask
 
 altMask 		= mod1Mask
 
-layoutDefault		= avoidStruts $ Tall 1 (3/100) (1/2)
 
 myLayoutHook		= onWorkspace workspaceFloating simplestFloat
-			$ borderResize(emptyBSP)
+			$ borderResize $ emptyBSP
 
 myFocusedBorderColor	= "#7c7c7c"
 
@@ -81,18 +70,21 @@ myManageHook		= composeAll
 			]
 
 myStartupHook		=   setWMName "LG3D"
+                        <+> spawn "$HOME/.xmonad/scripts/autostart.sh"
 			<+> spawn "compton --active-opacity 1.0 --shadow-ignore-shaped"
-			<+> spawn "nitrogen --restore &"
 			<+> spawn "udiskie &"
 			<+> spawn "twmnd &"
                         <+> spawn "uim-xim &"  
                         <+> spawn "wal -i ~/Pictures/Wallpapers -a 90 &"  
 
 myAdditionalKeys	=
-			[ ((myModMask,					xK_p)		, (spawn "rofi -show run")) 
-			, ((myModMask,					xK_KP_Add)	, (spawn "amixer sset Master 5%+"))
-			, ((myModMask,					xK_KP_Subtract)	, (spawn "amixer sset Master 5%-"))
-			, ((myModMask .|. shiftMask,			xK_l)		, (spawn "i3lock-fancy -p -- scrot -z"))
+			[ ((myModMask,					xK_p    )	, (spawn "rofi -show run")) 
+			, ((myModMask .|. shiftMask,			xK_l    )       , (spawn "i3lock-fancy -p -- scrot -z"))
+                        , ((myModMask,                                  xK_b    )       , sendMessage ToggleStruts)
+			-- Media
+                        , ((0,  xF86XK_AudioMute                                )     	, (spawn "amixer sset Master toggle"))
+                        , ((0,  xF86XK_AudioRaiseVolume                         )     	, (spawn "amixer sset Master 5%+"))
+			, ((0  ,xF86XK_AudioLowerVolume                         )       , (spawn "amixer sset Master 5%-"))
 			-- BSP
 			--- Window resizing
 			, ((myModMask .|. altMask,			xK_Right)	, sendMessage $ ExpandTowards R)
@@ -103,6 +95,15 @@ myAdditionalKeys	=
 			, ((myModMask .|. altMask .|. controlMask,	xK_Left	)	, sendMessage $ ShrinkFrom L)
 			, ((myModMask .|. altMask .|. controlMask,	xK_Down	)	, sendMessage $ ShrinkFrom D)
 			, ((myModMask .|. altMask .|. controlMask,	xK_Up	)	, sendMessage $ ShrinkFrom U)
+			--- Window resizing [VI]
+			, ((myModMask .|. altMask,			xK_l    )	, sendMessage $ ExpandTowards R)
+			, ((myModMask .|. altMask,			xK_h	)	, sendMessage $ ExpandTowards L)
+			, ((myModMask .|. altMask,			xK_j	)	, sendMessage $ ExpandTowards D)
+			, ((myModMask .|. altMask,			xK_k	)	, sendMessage $ ExpandTowards U)
+			, ((myModMask .|. altMask .|. controlMask,	xK_l    )	, sendMessage $ ShrinkFrom R)
+			, ((myModMask .|. altMask .|. controlMask,	xK_h	)	, sendMessage $ ShrinkFrom L)
+			, ((myModMask .|. altMask .|. controlMask,	xK_j	)	, sendMessage $ ShrinkFrom D)
+			, ((myModMask .|. altMask .|. controlMask,	xK_k	)	, sendMessage $ ShrinkFrom U)
 			--- Window moving
 			, ((myModMask,					xK_r	)	, sendMessage Rotate)
 			, ((myModMask,					xK_s	)	, sendMessage Swap)
@@ -118,24 +119,33 @@ myAdditionalKeys	=
 			, ((myModMask,					xK_Left	)	, windowGo L False)
 			, ((myModMask,					xK_Up	)	, windowGo U False)
 			, ((myModMask,					xK_Down )	, windowGo D False)
+			--- Directional navigation [VI]
+			, ((myModMask,					xK_l    )	, windowGo R False)
+			, ((myModMask,					xK_h	)	, windowGo L False)
+			, ((myModMask,					xK_k	)	, windowGo U False)
+			, ((myModMask,					xK_j    )	, windowGo D False)
 			--- Swap windows
 			, ((myModMask .|. controlMask,			xK_Right)	, windowSwap R False)
 			, ((myModMask .|. controlMask,			xK_Left )	, windowSwap L False)
 			, ((myModMask .|. controlMask,			xK_Up	)	, windowSwap U False)
 			, ((myModMask .|. controlMask,			xK_Down	)	, windowSwap D False)
+			--- Swap windows [VI]
+			, ((myModMask .|. controlMask,			xK_l    )	, windowSwap R False)
+			, ((myModMask .|. controlMask,			xK_h    )	, windowSwap L False)
+			, ((myModMask .|. controlMask,			xK_k	)	, windowSwap U False)
+			, ((myModMask .|. controlMask,			xK_j	)	, windowSwap D False)
 			]
 
 myConfig 		= defaultConfig
 	{ terminal		= myTerminal
 	, modMask		= myModMask
-	, layoutHook		= myLayoutHook
+	, layoutHook		= avoidStruts $ myLayoutHook
 	, focusedBorderColor	= myFocusedBorderColor
 	, normalBorderColor	= myNormalBorderColor
 	, borderWidth		= myBorderWidth
 	, workspaces		= myWorkspaces
 	, manageHook		= myManageHook <+> manageHook defaultConfig
 	, startupHook		= myStartupHook
+        , handleEventHook       = handleEventHook def <+> fullscreenEventHook
 	} `additionalKeys` myAdditionalKeys
-
-toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
 
