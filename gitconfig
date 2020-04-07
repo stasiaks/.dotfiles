@@ -1,6 +1,7 @@
 [user]
 	email = arionw@live.com
 	name = Sebastian Stasiak
+	signingkey = B33F3F41FBEA2924
 [core]
 	editor = vim
 [alias]

@@ -17,3 +17,4 @@ fi
 
 (sleep 2; run $HOME/.config/polybar/launch.sh) &
 
+run nm-applet $
