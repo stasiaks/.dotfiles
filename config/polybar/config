@@ -120,7 +120,7 @@ font-4 = "FontAwesome5Brands:size=13;0"
 
 modules-left = ewmh
 modules-center = xwindow
-modules-right = pavolume memory3 cpu2 uptime date
+modules-right = pavolume memory3 cpu2 date
 
 tray-detached = false
 tray-offset-x = 0
