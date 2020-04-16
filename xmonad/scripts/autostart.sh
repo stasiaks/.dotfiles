@@ -21,4 +21,4 @@ run compton --active-opacity 1.0 --shadow-ignore-shaped
 run udiskie &
 run nm-applet &
 run wal -i ~/Pictures/Wallpapers -a 90 &
-
+run devilspie -a &
