@@ -20,3 +20,5 @@
 	mm          = !git fm && git merge master
 	cm          = !git fm && git checkout master
 	nf          = !sh -c 'git checkout -b feature/"$1"' -
+[pull]
+	rebase = true

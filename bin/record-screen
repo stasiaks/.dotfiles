@@ -1,0 +1,41 @@
+#!/bin/sh
+
+OUTPUT=''
+MONITOR=''
+
+while [ "$1" != "" ]; do
+    case $1 in
+        -o|--output ) shift
+		OUTPUT=$1
+		;;
+        -d|--display ) shift
+		MONITOR=$1
+		;;
+        * ) #usage
+		>&2 echo "Parameter $1 not recognized"
+		exit 1
+    esac
+    shift
+done
+
+if [ "$OUTPUT" = "" ]
+then
+	>&2 echo "Output file not set. Please specify --output parameter"
+	exit 1
+fi
+if [ "$MONITOR" = "" ]
+then
+	echo "Display not set. Defaulting to 1"
+	MONITOR=1
+fi
+
+XRANDR=$(xrandr | grep " connected " | sed -n ${MONITOR}p)
+DISPLAY_NAME=$(echo $XRANDR | awk '{print $1}')
+DISPLAY_RESOLUTION=$(echo $XRANDR | awk '{print $3}' | sed 's/+.*$//')
+DISPLAY_OFFSET=$(echo $XRANDR | awk '{print $3}' | sed 's/^[^+]*+//' | sed 's/+/,/')
+
+echo "Using display: $DISPLAY_NAME"
+echo "   resolution: $DISPLAY_RESOLUTION"
+echo "       offset: $DISPLAY_OFFSET"
+
+ffmpeg -video_size $DISPLAY_RESOLUTION -framerate 30 -f x11grab -i :0.0+$DISPLAY_OFFSET -f pulse -ac 2 -i 0 -loglevel warning $OUTPUT
