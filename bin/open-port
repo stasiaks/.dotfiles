@@ -5,7 +5,7 @@ if ! [ -x "$(command -v netstat)" ]; then
 	exit 1
 fi
 
-port=$@
+port=$1
 
 if [ -z "$port" ]; then
 	echo 'error: You need to provide port' >&2
