@@ -1,0 +1,37 @@
+{
+    "workbench.editor.showTabs": true,
+    "FSharp.useSdkScripts": true,
+    "FSharp.suggestGitignore": false,
+    "workbench.colorTheme": "Wal",
+    "glassit-linux.opacity": 80,
+    "window.menuBarVisibility": "toggle",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "terminal.explorerKind": "external",
+    "terminal.external.linuxExec": "urxvt",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "git.confirmSync": false,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["k", "j"],
+            "after": ["<Esc>"]
+        },
+    ],
+    "diffEditor.ignoreTrimWhitespace": false,
+    "mssql.connections": [
+        {
+            "server": "localhost",
+            "database": "",
+            "authenticationType": "SqlLogin",
+            "user": "SA",
+            "password": "",
+            "emptyPasswordInput": false,
+            "savePassword": true
+        }
+    ]
+}
