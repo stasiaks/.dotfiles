@@ -9,6 +9,7 @@ fi
 ZSH=/usr/share/oh-my-zsh/
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
+TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
