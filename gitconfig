@@ -22,3 +22,5 @@
 	nf          = !sh -c 'git checkout -b feature/"$1"' -
 [pull]
 	rebase = true
+[init]
+	defaultBranch = master
