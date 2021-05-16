@@ -10,6 +10,6 @@ templates:
   params:
     author-name: 'Sebastian Stasiak'
     author-email: 12955338+stasiaks@users.noreply.github.com
-    copyright: 'Copyright (c) 2019 Sebastian Stasiak'
+    copyright: 'Copyright (c) 2021 Sebastian Stasiak'
     github-username: stasiaks
     scm-init: git
