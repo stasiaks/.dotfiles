@@ -38,4 +38,4 @@ echo "Using display: $DISPLAY_NAME"
 echo "   resolution: $DISPLAY_RESOLUTION"
 echo "       offset: $DISPLAY_OFFSET"
 
-ffmpeg -video_size $DISPLAY_RESOLUTION -framerate 30 -f x11grab -i :0.0+$DISPLAY_OFFSET -f pulse -ac 2 -i 0 -loglevel warning $OUTPUT
+ffmpeg -video_size $DISPLAY_RESOLUTION -framerate 30 -f x11grab -i :0.0+$DISPLAY_OFFSET -f pulse -ac 2 -i 0 -loglevel info $OUTPUT
