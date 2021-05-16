@@ -13,9 +13,11 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.SetWMName
 import XMonad.Util.Run
 import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.NamedScratchpad
 import XMonad.Actions.Navigation2D
 import Data.List
 import Graphics.X11.ExtraTypes.XF86
+import qualified XMonad.StackSet as W
 
 main			= xmonad . ewmh $ docks $ myConfig 
 
@@ -57,6 +59,17 @@ myWorkspaces :: [String]= workspaceTerminal
 			: workspaceFloating
 			: []
 
+myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
+                ]
+    where
+        spawnTerm = myTerminal ++ " -name scratchpad"
+        findTerm  = resource =? "scratchpad"
+        manageTerm = customFloating $ W.RationalRect l t w h
+                     where
+                         h = 0.9
+                         w = 0.9
+                         t = 0.95 - h
+                         l = 0.96 - w
 
 myManageHook		= composeAll
 			[ className =? "Opera developer"		--> doShift workspaceWeb
@@ -79,12 +92,14 @@ myStartupHook		=   setWMName "LG3D"
 
 myAdditionalKeys	=
 			[ ((myModMask,					xK_p    )	, (spawn "rofi -show run")) 
-			, ((myModMask .|. shiftMask,			xK_l    )       , (spawn "i3lock-fancy -p -- scrot -z"))
+			, ((myModMask .|. shiftMask,			xK_l    )       , (spawn "i3lock-fancy"))
                         , ((myModMask,                                  xK_b    )       , sendMessage ToggleStruts)
 			-- Media
                         , ((0,  xF86XK_AudioMute                                )     	, (spawn "amixer sset Master toggle"))
                         , ((0,  xF86XK_AudioRaiseVolume                         )     	, (spawn "amixer sset Master 5%+"))
 			, ((0  ,xF86XK_AudioLowerVolume                         )       , (spawn "amixer sset Master 5%-"))
+            -- Named Scratchpads
+            , ((myModMask, xK_grave), namedScratchpadAction myScratchPads "terminal")
 			-- BSP
 			--- Window resizing
 			, ((myModMask .|. altMask,			xK_Right)	, sendMessage $ ExpandTowards R)
@@ -144,7 +159,7 @@ myConfig 		= defaultConfig
 	, normalBorderColor	= myNormalBorderColor
 	, borderWidth		= myBorderWidth
 	, workspaces		= myWorkspaces
-	, manageHook		= myManageHook <+> manageHook defaultConfig
+	, manageHook		= myManageHook <+> namedScratchpadManageHook myScratchPads <+> manageHook defaultConfig
 	, startupHook		= myStartupHook
         , handleEventHook       = handleEventHook def <+> fullscreenEventHook
 	} `additionalKeys` myAdditionalKeys
