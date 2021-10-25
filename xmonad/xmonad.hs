@@ -92,6 +92,8 @@ myStartupHook		=   setWMName "LG3D"
 
 myAdditionalKeys	=
 			[ ((myModMask,					xK_p    )	, (spawn "rofi -show run")) 
+			, ((myModMask,					xK_w    )	, (spawn "rofi -show fb -modi 'fb:~/.config/rofi/themeswitch.sh'")) 
+			, ((myModMask,					xK_Tab    )	, (spawn "rofi -show window")) 
 			, ((myModMask .|. shiftMask,			xK_l    )       , (spawn "i3lock-fancy"))
                         , ((myModMask,                                  xK_b    )       , sendMessage ToggleStruts)
 			-- Media
