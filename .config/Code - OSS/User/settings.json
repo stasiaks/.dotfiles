@@ -33,5 +33,6 @@
             "emptyPasswordInput": false,
             "savePassword": true
         }
-    ]
+    ],
+    "workbench.iconTheme": "material-icon-theme"
 }

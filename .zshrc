@@ -4,11 +4,12 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
+#ZSH_THEME="powerlevel10k/powerlevel10k"
 TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -33,7 +34,7 @@ plugins=(git cp archlinux sudo vundle)
 
 # User configuration
 
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin/:$HOME/.local/bin:$PATH"
 export EDITOR='vim'
 
 # Import colorscheme from 'wal' asynchronously
