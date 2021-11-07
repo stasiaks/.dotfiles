@@ -120,7 +120,7 @@ font-4 = "FontAwesome5Brands:size=13;0"
 
 modules-left = ewmh
 modules-center = xwindow
-modules-right = pavolume memory3 cpu2 date
+modules-right = pavolume battery backlight memory3 cpu2 date
 
 tray-detached = false
 tray-offset-x = 0
@@ -254,10 +254,11 @@ card = intel_backlight
 format = <label>
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
+format-underline = #c7ae25
 
 ; Available tokens:
 ;   %percentage% (default)
-label = %percentage%%
+label =  %percentage%%
 
 ; Only applies if <ramp> is used
 ramp-0 = 🌕
