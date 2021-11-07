@@ -33,7 +33,7 @@ plugins=(git cp archlinux sudo vundle)
 
 # User configuration
 
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin/:$HOME/.local/bin:$PATH"
 export EDITOR='vim'
 
 # Import colorscheme from 'wal' asynchronously
