@@ -45,11 +45,6 @@ set conceallevel=1
 let g:texconceal='abdmg'
 hi clear Conceal
 
-" Spelling
-setlocal spell
-set spelllang=pl,en_gb
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
-
 " Ultisnips
 
 let g:UltiSnipsExpandTrigger = '<tab>'
