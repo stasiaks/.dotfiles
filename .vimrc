@@ -16,6 +16,7 @@ Plugin 'sirver/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'neoclide/coc.nvim'
 Plugin 'dylanaraps/wal.vim'
+Plugin 'ntpeters/vim-better-whitespace'
 
 call vundle#end()
 filetype plugin indent on
