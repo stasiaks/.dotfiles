@@ -17,6 +17,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'neoclide/coc.nvim'
 Plugin 'dylanaraps/wal.vim'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 filetype plugin indent on
@@ -45,11 +46,6 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:texconceal='abdmg'
 hi clear Conceal
-
-" Spelling
-setlocal spell
-set spelllang=pl,en_gb
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Ultisnips
 
