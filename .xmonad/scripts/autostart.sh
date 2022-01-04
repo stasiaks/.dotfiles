@@ -9,7 +9,7 @@ function run {
 }
 
 LAYOUT_DIRECTORY=$HOME/.screenlayout
-LAYOUT_SCRIPT=$LAYOUT_DIRECTORY/current.sh
+LAYOUT_SCRIPT=$LAYOUT_DIRECTORY/set-layout.sh
 
 if [ -f "$LAYOUT_SCRIPT" ]; then
 	run $LAYOUT_SCRIPT
