@@ -84,11 +84,6 @@ myManageHook = composeAll
 
 myStartupHook =   setWMName "LG3D"
               <+> spawn "$HOME/.xmonad/scripts/autostart.sh"
-              <+> spawn "compton --active-opacity 1.0 --shadow-ignore-shaped"
-              <+> spawn "udiskie &"
-              <+> spawn "twmnd &"
-              <+> spawn "uim-xim &"
-              <+> spawn "wal -i ~/Pictures/Wallpapers -a 90 &"
 
 myAdditionalKeys =
                  [ ((myModMask, xK_p)   , (spawn "rofi -show run"))

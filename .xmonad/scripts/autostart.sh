@@ -22,3 +22,4 @@ run udiskie &
 run nm-applet &
 run wal -i ~/Pictures/Wallpapers -a 90 &
 run devilspie -a &
+run uim-xim
