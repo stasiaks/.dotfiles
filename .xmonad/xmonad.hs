@@ -59,12 +59,15 @@ myWorkspaces :: [String] = workspaceTerminal
                          : workspaceFloating
                          : []
 
-myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
+myScratchPads = [ NS "terminal" spawnTerm findTerm manageFloatingWindow
+                , NS "keepass" spawnKeePass findKeePass manageFloatingWindow
                 ]
     where
         spawnTerm = myTerminal ++ " -name scratchpad"
         findTerm  = resource =? "scratchpad"
-        manageTerm = customFloating $ W.RationalRect l t w h
+        spawnKeePass = "keepassxc"
+        findKeePass = resource =? "keepassxc"
+        manageFloatingWindow = customFloating $ W.RationalRect l t w h
                      where
                          h = 0.9
                          w = 0.9
@@ -73,6 +76,7 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
 
 myManageHook = composeAll
              [ className =? "Opera developer"           --> doShift workspaceWeb
+             , className =? "firefox"                   --> doShift workspaceWeb
              , className =? "Vivaldi-stable"            --> doShift workspaceWeb
              , className =? "jetbrains-clion"           --> doShift workspaceCode
              , className =? "jetbrains-jetbrains-rider" --> doShift workspaceCode
@@ -98,6 +102,7 @@ myAdditionalKeys =
                  , ((0, xF86XK_AudioLowerVolume) , (spawn "amixer sset Master 5%-"))
                  -- Named Scratchpads
                  , ((myModMask, xK_grave), namedScratchpadAction myScratchPads "terminal")
+                 , ((myModMask .|. shiftMask, xK_grave), namedScratchpadAction myScratchPads "keepass")
                  -- BSP
                  --- Window resizing
                  , ((myModMask .|. altMask, xK_Right) , sendMessage $ ExpandTowards R)
