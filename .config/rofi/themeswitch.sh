@@ -19,7 +19,8 @@ else
         #wal -i `cat ~/.cache/wal/wal` > /dev/null
     elif [ -n "${THEMES}" ]
     then
-        wal -a 90 -i $WALLPAPERDIR${THEMES} > /dev/null
+        nitrogen --head=0 --set-zoom-fill $WALLPAPERDIR${THEMES} > /dev/null &
+        nitrogen --head=1 --set-zoom-fill $WALLPAPERDIR${THEMES} > /dev/null &
     fi
 fi
 
