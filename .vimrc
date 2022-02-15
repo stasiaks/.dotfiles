@@ -17,6 +17,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'neoclide/coc.nvim'
 Plugin 'dylanaraps/wal.vim'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'tpope/vim-fugitive'
+Plugin 'iamcco/markdown-preview.nvim'
 
 call vundle#end()
 filetype plugin indent on
