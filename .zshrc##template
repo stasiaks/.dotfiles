@@ -41,17 +41,6 @@ plugins=(git cp archlinux sudo vundle)
 export PATH="$HOME/bin/:$HOME/.local/bin:$PATH"
 export EDITOR='vim'
 
-{% if yadm.os == "Darwin" %}
-{% else %}
-# Import colorscheme from 'wal' asynchronously
-# &   # Run the process in the background.
-# ( ) # Hide shell job control messages.
-(cat ~/.cache/wal/sequences &)
-
-# To add support for TTYs this line can be optionally added.
-source ~/.cache/wal/colors-tty.sh
-{% endif %}
-
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
