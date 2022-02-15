@@ -19,23 +19,20 @@ import Data.List
 import Graphics.X11.ExtraTypes.XF86
 import qualified XMonad.StackSet as W
 
-main       = xmonad . ewmh $ docks $ myConfig
+main = xmonad . ewmh $ docks myConfig
+
+myNormalBorderColor  = "#3f3f3f"
+myFocusedBorderColor = "#7c7c7c"
 
 myTerminal = "urxvt"
 
-myModMask  = mod4Mask
+myModMask = mod4Mask
+altMask   = mod1Mask
 
-altMask    = mod1Mask
-
+myBorderWidth = 1
 
 myLayoutHook = onWorkspace workspaceFloating simplestFloat
-             $ borderResize $ emptyBSP
-
-myFocusedBorderColor = "#7c7c7c"
-
-myNormalBorderColor  = "#3f3f3f"
-
-myBorderWidth        = 1
+             $ borderResize emptyBSP
 
 -- Workspaces
 
@@ -51,13 +48,13 @@ workspaceDocument = "\xf044"
 
 workspaceFloating = "\xf2d2"
 
-myWorkspaces :: [String] = workspaceTerminal
-                         : workspaceCode
-                         : workspaceWeb
-                         : workspaceMail
-                         : workspaceDocument
-                         : workspaceFloating
-                         : []
+myWorkspaces = [ workspaceTerminal
+               , workspaceCode
+               , workspaceWeb
+               , workspaceMail
+               , workspaceDocument
+               , workspaceFloating
+               ]
 
 myScratchPads = [ NS "terminal" spawnTerm findTerm manageFloatingWindow
                 , NS "keepass" spawnKeePass findKeePass manageFloatingWindow
@@ -88,6 +85,10 @@ myManageHook = composeAll
 
 myStartupHook =   setWMName "LG3D"
               <+> spawn "$HOME/.xmonad/scripts/autostart.sh"
+
+myLogHook = do
+    currentTag <- gets (W.currentTag . windowset)
+    spawn ("$HOME/.xmonad/scripts/change-workspace.sh " ++ currentTag ++ " " ++ currentTag)
 
 myAdditionalKeys =
                  [ ((myModMask, xK_p)   , (spawn "rofi -show run"))
@@ -155,15 +156,16 @@ myAdditionalKeys =
                  ]
 
 myConfig = defaultConfig
-         { terminal           = myTerminal
-         , modMask            = myModMask
-         , layoutHook         = avoidStruts $ myLayoutHook
+         { normalBorderColor  = myNormalBorderColor
          , focusedBorderColor = myFocusedBorderColor
-         , normalBorderColor  = myNormalBorderColor
-         , borderWidth        = myBorderWidth
-         , workspaces         = myWorkspaces
+         , terminal           = myTerminal
+         , layoutHook         = avoidStruts myLayoutHook
          , manageHook         = myManageHook <+> namedScratchpadManageHook myScratchPads <+> manageHook defaultConfig
-         , startupHook        = myStartupHook
          , handleEventHook    = handleEventHook def <+> fullscreenEventHook
+         , workspaces         = myWorkspaces
+         , modMask            = myModMask
+         , borderWidth        = myBorderWidth
+         , logHook            = myLogHook
+         , startupHook        = myStartupHook
          } `additionalKeys` myAdditionalKeys
 
