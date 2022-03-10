@@ -2,7 +2,7 @@
     "workbench.editor.showTabs": true,
     "FSharp.useSdkScripts": true,
     "FSharp.suggestGitignore": false,
-    "workbench.colorTheme": "Wal",
+    "workbench.colorTheme": "Nord",
     "glassit-linux.opacity": 80,
     "window.menuBarVisibility": "toggle",
     "editor.suggestSelection": "first",
