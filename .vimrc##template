@@ -7,33 +7,53 @@ call vundle#begin()
 
 " Plugins
 
+" - Core & UI
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'arcticicestudio/nord-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'zefei/vim-wintabs'
+Plugin 'zefei/vim-wintabs-powerline'
+" - Motion
 Plugin 'bkad/camelcasemotion'
-Plugin 'lervag/vimtex'
+" - Snippets
 Plugin 'sirver/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'neoclide/coc.nvim'
-Plugin 'dylanaraps/wal.vim'
-Plugin 'ntpeters/vim-better-whitespace'
+" - Git
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+" - Programming
+Plugin 'neoclide/coc.nvim'
+Plugin 'dense-analysis/ale'
+" -- JSON
+Plugin 'Quramy/vison'
+" -- LaTeX
+Plugin 'lervag/vimtex'
+" -- Markdown
 Plugin 'iamcco/markdown-preview.nvim'
+" -- PlantUML
+Plugin 'aklt/plantuml-syntax'
+Plugin 'weirongxu/plantuml-previewer.vim'
 
 call vundle#end()
 filetype plugin indent on
 
 " -----------------------------
 
-colorscheme wal
+colorscheme nord
 syntax on
 
 set number
+set backspace=indent,eol,start
 set statusline+=%#warningmsg#
 set statusline+=%*
 set expandtab
 set tabstop=4
 set shiftwidth=4
+set mouse=a
+set hidden
+set updatetime=100
 
 " Language specific
 
@@ -107,7 +127,6 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-
 " Airline
 
 let g:airline_theme='deus'
@@ -125,13 +144,16 @@ sunmap ge
 
 " Spellcheck
 
+{% if yadm.os == "Darwin" %}
+{% else %}
 setlocal spell
 set spelllang=pl,en_gb
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 hi clear SpellBad
 hi SpellBad cterm=underline,bold
+{% endif %}
 
-" Keybinds
+" Basic Keybinds
 
 inoremap kj <Esc>
 nnoremap <C-H> <C-W><C-H>
