@@ -8,11 +8,13 @@ cask "keepassxc"
 tap "koekeishiya/formulae"
 brew "yabai"
 cask "kitty"
+tap "FelixKratz/formulae"
+brew "sketchybar"
 
 # Fonts
 tap "homebrew/cask-fonts"
 cask "font-hack-nerd-font"
-cask "font-iosevka" 
+cask "font-iosevka"
 
 # Text
 brew "vim"
