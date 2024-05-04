@@ -22,5 +22,5 @@ run udiskie &
 run nm-applet &
 run nitrogen --random ~/Pictures/Wallpapers --head=0 --set-zoom-fill &
 run nitrogen --random ~/Pictures/Wallpapers --head=1 --set-zoom-fill &
-run devilspie -a &
-run uim-xim
+run nitrogen --random ~/Pictures/Wallpapers --head=2 --set-zoom-fill &
+run devilspie -a
