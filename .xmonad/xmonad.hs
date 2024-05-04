@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings, ScopedTypeVariables #-}
+{-# OPTIONS_GHC -Wno-deprecations #-}
 
 import XMonad
 import XMonad.Config.Desktop

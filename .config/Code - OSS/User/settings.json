@@ -1,10 +1,10 @@
 {
-    "workbench.editor.showTabs": true,
+    "workbench.editor.showTabs": "multiple",
     "FSharp.useSdkScripts": true,
     "FSharp.suggestGitignore": false,
     "workbench.colorTheme": "Nord",
     "glassit-linux.opacity": 80,
-    "window.menuBarVisibility": "toggle",
+    "window.menuBarVisibility": "compact",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "terminal.explorerKind": "external",
@@ -34,5 +34,13 @@
             "savePassword": true
         }
     ],
-    "workbench.iconTheme": "material-icon-theme"
+    "workbench.iconTheme": "material-icon-theme",
+    "plantuml.jar": "/usr/share/java/plantuml/plantuml.jar",
+    "git.openRepositoryInParentFolders": "never",
+    "editor.renderWhitespace": "boundary",
+    "vim.camelCaseMotion.enable": true,
+    "vim.easymotion": true,
+    "vim.vimrc.enable": true,
+    "files.insertFinalNewline": true,
+    "dotnet.automaticallyCreateSolutionInWorkspace": false
 }
