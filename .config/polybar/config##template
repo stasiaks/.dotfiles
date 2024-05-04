@@ -119,11 +119,12 @@ font-1 = "FontAwesome:size=13;0"
 font-2 = "Noto Sans:size=10;0"
 font-3 = "Noto Sans Mono:size=10;0"
 font-4 = "FontAwesome5Brands:size=13;0"
+font-5 = "Iosevka Nerd Font Propo:size=11;0"
 
 modules-left = ewmh
 modules-center = xwindow
 {% if yadm.class == "laptop" %}
-modules-right = pavolume battery backlight memory3 cpu2 date
+modules-right = pulseaudio battery backlight memory3 cpu2 date
 {% else %}
 modules-right = pavolume memory3 cpu2 date
 {% endif %}
@@ -186,6 +187,7 @@ font-1 = "FontAwesome:size=13;0"
 font-2 = "Noto Sans:size=10;0"
 font-3 = "Noto Sans Mono:size=10;0"
 font-4 = "FontAwesome5Brands:size=13;0"
+font-5 = "Iosevka Nerd Font Propo:size=11;0"
 
 modules-left = load-average
 modules-center = networkspeeddown networkspeedup
@@ -463,7 +465,7 @@ pin-workspaces = false
 enable-click = true
 enable-scroll = false
 reverse-scroll = false
-
+group-by-monitor = false
 
 icon-0 = 1;
 icon-1 = 2;
@@ -775,7 +777,26 @@ format-underline = #3EC13F
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
+################################################################################
 
+[module/pulseaudio]
+type = internal/pulseaudio
+use-ui-max = true
+interval = 5
+reverse-scroll = false
+format-muted = <label-muted>
+label-muted = "󰝟 muted"
+format-muted-underline = #3EC13F
+format-muted-foreground = ${colors.foreground}
+format-muted-background = ${colors.background}
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 󰕾
+format-volume = <ramp-volume> <label-volume>
+format-volume-underline = #3EC13F
+format-volume-foreground = ${colors.foreground}
+format-volume-background = ${colors.background}
+click-right = pavucontrol
 
 ################################################################################
 
