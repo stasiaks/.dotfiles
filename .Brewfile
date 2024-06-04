@@ -10,6 +10,8 @@ brew "yabai"
 cask "kitty"
 tap "FelixKratz/formulae"
 brew "sketchybar"
+brew "jq"
+cask "android-file-transfer"
 
 # Fonts
 tap "homebrew/cask-fonts"
@@ -40,3 +42,4 @@ brew "openjdk@11"
 brew "azure-cli"
 cask "ghidra"
 cask "hammerspoon"
+cask "android-platform-tools"
