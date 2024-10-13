@@ -8,18 +8,14 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Path to your oh-my-zsh installation.
 {% if yadm.hostname == "X1CG7" %}
 # On this computer powerlevel10k is installed from AUR instead of cloning repo.
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+ZSH=/usr/share/oh-my-zsh/
 {% else %}
 ZSH_THEME="powerlevel10k/powerlevel10k"
-{% endif %}
-
-# Path to your oh-my-zsh installation.
-{% if yadm.os == "Darwin" %}
 ZSH="$HOME/.oh-my-zsh"
-{% else %}
-ZSH=/usr/share/oh-my-zsh/
 {% endif %}
 
 TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
