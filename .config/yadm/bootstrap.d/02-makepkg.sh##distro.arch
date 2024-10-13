@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd /home/stasiaks/.arch_pkgs
+makepkg --noconfirm -fcsi
+

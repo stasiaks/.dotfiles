@@ -1,0 +1,35 @@
+pkgname=stasiaks-base
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Base system configuration for my machines"
+arch=('any')
+url="https://github.com/stasiaks/.dotfiles"
+license=('GPL')
+install=stasiaks-base.install
+
+depends=(
+	base base-devel linux linux-firmware man-db man-pages texinfo
+	acpi mesa xorg-server xorg-xinit
+	ttf-iosevka-nerd
+	gvim rxvt-unicode
+	rofi
+	lemurs xmonad xmonad-contrib
+)
+
+# DISPLAY DRIVERS
+{% if yadm.class == "gpu_nvidia" %}
+depends+=(
+	xf86-video-nouveau vulkan-nouveau
+)
+{% endif %}
+{% if yadm.class == "gpu_intel" %}
+depends+=(
+	vulkan-intel
+)
+{% endif %}
+{% if yadm.class == "gpu_amd" %}
+depends+=(
+	xf86-video-amdgpu vulkan-radeon
+)
+{% endif %}
+
