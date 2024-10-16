@@ -1,0 +1,16 @@
+post_install() {
+	post_upgrade
+}
+
+post_upgrade() {
+	cp /home/stasiaks/.arch_pkgs/lemurs_xmonad /etc/lemurs/wms/xmonad
+	chmod 755 /etc/lemurs/wms/xmonad
+	systemctl enable --now NetworkManager
+	systemctl enable --now lemurs.service
+    # This won't work since pots_upgrade runs as root
+    # systemctl enable --now --user syncthing.service
+    # Instead - I do it manually using template
+    mkdir -p /home/{{ yadm.user }}/.config/systemd/user/default.target.wants
+    ln -sf /usr/lib/systemd/user/syncthing.service /home/{{ yadm.user }}/.config/systemd/user/default.target.wants/syncthing.service
+}
+
