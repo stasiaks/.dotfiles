@@ -15,17 +15,18 @@ import XMonad.Hooks.SetWMName
 import XMonad.Util.Run
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Util.NamedScratchpad
+import XMonad.Util.Hacks
 import XMonad.Actions.Navigation2D
 import Data.List
 import Graphics.X11.ExtraTypes.XF86
 import qualified XMonad.StackSet as W
 
-main = xmonad . ewmh $ docks myConfig
+main = xmonad . ewmh .javaHack  $ docks myConfig
 
 myNormalBorderColor  = "#3f3f3f"
 myFocusedBorderColor = "#7c7c7c"
 
-myTerminal = "urxvt"
+myTerminal = "kitty"
 
 myModMask = mod4Mask
 altMask   = mod1Mask
@@ -61,7 +62,7 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageFloatingWindow
                 , NS "keepass" spawnKeePass findKeePass manageFloatingWindow
                 ]
     where
-        spawnTerm = myTerminal ++ " -name scratchpad"
+        spawnTerm = myTerminal ++ " --app-id scratchpad"
         findTerm  = resource =? "scratchpad"
         spawnKeePass = "keepassxc"
         findKeePass = resource =? "keepassxc"
@@ -84,8 +85,7 @@ myManageHook = composeAll
              , manageDocks
              ]
 
-myStartupHook =   setWMName "LG3D"
-              <+> spawn "$HOME/.xmonad/scripts/autostart.sh"
+myStartupHook =   spawn "$HOME/.xmonad/scripts/autostart.sh"
 
 myLogHook = do
     currentTag <- gets (W.currentTag . windowset)

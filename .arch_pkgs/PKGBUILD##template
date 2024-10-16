@@ -9,11 +9,16 @@ install=stasiaks-base.install
 
 depends=(
 	base base-devel linux linux-firmware man-db man-pages texinfo
-	acpi mesa xorg-server xorg-xinit
+	acpi mesa xorg-server xorg-xinit xorg-xrandr xorg-xsetroot
+	arandr udiskie ranger
+    networkmanager network-manager-applet
 	ttf-iosevka-nerd
-	gvim rxvt-unicode
+	gvim rxvt-unicode kitty
 	rofi
-	lemurs xmonad xmonad-contrib
+	python
+    nodejs npm yarn
+    firefox keepassxc polybar openssh syncthing dunst
+	lemurs xmonad xmonad-contrib picom nitrogen devilspie wmctrl
 )
 
 # DISPLAY DRIVERS
