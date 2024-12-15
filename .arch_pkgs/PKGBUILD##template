@@ -10,15 +10,31 @@ install=stasiaks-base.install
 depends=(
 	base base-devel linux linux-firmware man-db man-pages texinfo
 	acpi mesa xorg-server xorg-xinit xorg-xrandr xorg-xsetroot
-	arandr udiskie ranger
-    networkmanager network-manager-applet
+	pipewire pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack-client
+	wireplumber helvum
+	polkit pantheon-polkit-agent
+	zip unzip
+	arandr autorandr udiskie ranger
+	networkmanager network-manager-applet
 	ttf-iosevka-nerd
 	gvim rxvt-unicode kitty
 	rofi
 	python
-    nodejs npm yarn
-    firefox keepassxc polybar openssh syncthing dunst
+	nodejs npm yarn
+	firefox keepassxc polybar openssh syncthing dunst gnucash
 	lemurs xmonad xmonad-contrib picom nitrogen devilspie wmctrl
+)
+
+# TeX
+depends+=(
+	texstudio
+	texlive-basic texlive-latex texlive-bibtexextra texlive-binextra texlive-context
+	texlive-fontsextra texlive-fontsrecommended texlive-fontutils
+	texlive-plaingeneric texlive-latexrecommended texlive-formatsextra
+	texlive-games texlive-humanities texlive-pictures
+	texlive-latexextra texlive-luatex texlive-mathscience texlive-metapost
+	texlive-music texlive-pstricks texlive-publishers texlive-xetex
+	texlive-langpolish
 )
 
 # DISPLAY DRIVERS
