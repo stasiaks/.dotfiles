@@ -51,6 +51,8 @@ filetype plugin indent on
 colorscheme nord
 syntax on
 
+set list
+set listchars=space:·,tab:>-
 set number
 set backspace=indent,eol,start
 set statusline+=%#warningmsg#
