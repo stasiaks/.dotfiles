@@ -39,6 +39,7 @@ plugins=(git cp archlinux sudo vundle)
 # User configuration
 
 export PATH="$HOME/bin/:$HOME/.local/bin:$PATH"
+export PATH="/usr/share/dotnet:$PATH"
 export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 export EDITOR='vim'
 

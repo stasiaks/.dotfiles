@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if ! [ -f "$HOME/bin/dotnet-install" ]; then
+    echo "Downloading dotnet install script"
+    curl 'https://dot.net/v1/dotnet-install.sh' -L -o "$HOME/bin/dotnet-install"
+    chmod +x $HOME/bin/dotnet-install
+fi
+
+echo "Installing dotnet latest"
+sudo $HOME/bin/dotnet-install --install-dir /usr/share/dotnet -channel STS -version latest
+
