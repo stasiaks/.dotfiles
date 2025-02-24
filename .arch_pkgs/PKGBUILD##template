@@ -8,49 +8,56 @@ license=('GPL')
 install=stasiaks-base.install
 
 depends=(
-	base base-devel linux linux-firmware man-db man-pages texinfo
-	acpi mesa xorg-server xorg-xinit xorg-xrandr xorg-xsetroot
-	pipewire pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack-client
-	wireplumber helvum
-	polkit pantheon-polkit-agent
-	zip unzip
-	arandr autorandr udiskie ranger
-	networkmanager network-manager-applet
-	ttf-iosevka-nerd
-	gvim rxvt-unicode kitty
-	rofi
-	python
-	nodejs npm yarn
-	firefox keepassxc polybar openssh syncthing dunst gnucash
-	lemurs xmonad xmonad-contrib picom nitrogen devilspie wmctrl
+    base base-devel linux linux-firmware man-db man-pages texinfo
+    acpi mesa xorg-server xorg-xinit xorg-xrandr xorg-xsetroot numlockx
+    pipewire pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack-client
+    wireplumber helvum
+    polkit pantheon-polkit-agent
+    zip unzip
+    arandr udiskie ranger
+    networkmanager network-manager-applet
+    gvim rxvt-unicode kitty
+    rofi
+    python
+    nodejs npm yarn
+    jdk-openjdk
+    firefox keepassxc polybar openssh syncthing dunst gnucash
+    lemurs xmonad xmonad-contrib picom nitrogen devilspie wmctrl
+)
+
+# Fonts
+depends+=(
+    ttc-iosevka ttf-iosevka-nerd ttf-iosevkaterm-nerd ttf-iosevkatermslab-nerd
+    ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-mono
+    noto-fonts noto-fonts-cjk noto-fonts-emoji
 )
 
 # TeX
 depends+=(
-	texstudio
-	texlive-basic texlive-latex texlive-bibtexextra texlive-binextra texlive-context
-	texlive-fontsextra texlive-fontsrecommended texlive-fontutils
-	texlive-plaingeneric texlive-latexrecommended texlive-formatsextra
-	texlive-games texlive-humanities texlive-pictures
-	texlive-latexextra texlive-luatex texlive-mathscience texlive-metapost
-	texlive-music texlive-pstricks texlive-publishers texlive-xetex
-	texlive-langpolish
+    texstudio
+    texlive-basic texlive-latex texlive-bibtexextra texlive-binextra texlive-context
+    texlive-fontsextra texlive-fontsrecommended texlive-fontutils
+    texlive-plaingeneric texlive-latexrecommended texlive-formatsextra
+    texlive-games texlive-humanities texlive-pictures
+    texlive-latexextra texlive-luatex texlive-mathscience texlive-metapost
+    texlive-music texlive-pstricks texlive-publishers texlive-xetex
+    texlive-langpolish
 )
 
 # DISPLAY DRIVERS
 {% if yadm.class == "gpu_nvidia" %}
 depends+=(
-	xf86-video-nouveau vulkan-nouveau
+    xf86-video-nouveau vulkan-nouveau
 )
 {% endif %}
 {% if yadm.class == "gpu_intel" %}
 depends+=(
-	vulkan-intel
+    vulkan-intel
 )
 {% endif %}
 {% if yadm.class == "gpu_amd" %}
 depends+=(
-	xf86-video-amdgpu vulkan-radeon
+    xf86-video-amdgpu vulkan-radeon
 )
 {% endif %}
 
