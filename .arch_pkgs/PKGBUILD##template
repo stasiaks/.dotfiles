@@ -8,21 +8,55 @@ license=('GPL')
 install=stasiaks-base.install
 
 depends=(
-    base base-devel linux linux-firmware man-db man-pages texinfo
-    acpi mesa xorg-server xorg-xinit xorg-xrandr xorg-xsetroot numlockx
-    pipewire pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack-client
-    wireplumber helvum
+    base base-devel linux linux-firmware
+    man-db man-pages texinfo
+    sshfs fuse3 fuse2
+    acpi
     polkit pantheon-polkit-agent
-    zip unzip
-    arandr udiskie ranger
-    networkmanager network-manager-applet
-    gvim rxvt-unicode kitty
-    rofi
+)
+
+# Coding
+depends+=(
+    gvim code
     python
     nodejs npm yarn
     jdk-openjdk
-    firefox keepassxc polybar openssh syncthing dunst gnucash
-    lemurs xmonad xmonad-contrib picom nitrogen devilspie wmctrl
+)
+
+# Utility
+depends+=(
+    zip unzip
+    udiskie
+    ranger
+    keepassxc gnucash
+)
+
+# Graphic Environment
+depends+=(
+    mesa
+    xorg-server xorg-xinit xorg-xrandr xorg-xsetroot
+    numlockx arandr
+    lemurs
+    xmonad xmonad-contrib
+    picom nitrogen devilspie wmctrl
+    rofi
+    polybar dunst
+    kitty rxvt-unicode
+)
+
+# Audio
+depends+=(
+    pipewire pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack-client
+    wireplumber helvum
+)
+
+# Network
+depends+=(
+    networkmanager network-manager-applet
+    iperf3
+    firefox
+    openssh
+    syncthing
 )
 
 # Fonts
