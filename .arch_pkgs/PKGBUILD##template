@@ -11,13 +11,16 @@ depends=(
     base base-devel linux linux-firmware
     man-db man-pages texinfo
     sshfs fuse3 fuse2
+    ripgrep
     acpi
     polkit pantheon-polkit-agent
 )
 
 # Coding
 depends+=(
+    git-delta bat
     gvim code
+    clang cmake
     python
     nodejs npm yarn
     jdk-openjdk
@@ -26,9 +29,11 @@ depends+=(
 # Utility
 depends+=(
     zip unzip
+    fzf
     udiskie
     ranger
     keepassxc gnucash
+    rpi-imager
 )
 
 # Graphic Environment

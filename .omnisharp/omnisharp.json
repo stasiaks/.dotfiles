@@ -1,0 +1,9 @@
+{
+    "RoslynExtensionsOptions": {
+        "AnalyzeOpenDocumentsOnly": false,
+        "EnableAnalyzersSupport": true,
+        "EnableDecompilationSupport": true,
+        "EnableImportCompletion": true,
+        "EnableAsyncCompletion": true
+    }
+}
