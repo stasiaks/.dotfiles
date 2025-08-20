@@ -24,6 +24,6 @@ run nitrogen --random ~/Pictures/Wallpapers --head=1 --set-zoom-fill &
 run nitrogen --random ~/Pictures/Wallpapers --head=2 --set-zoom-fill &
 run devilspie -a
 run xsetroot -cursor_name left_ptr
-run setxkbmap pl
+run setxkbmap pl -option kpdl:dot
 run numlockx &
 
