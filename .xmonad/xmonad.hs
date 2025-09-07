@@ -92,11 +92,11 @@ myLogHook = do
     spawn ("$HOME/.xmonad/scripts/change-workspace.sh " ++ currentTag ++ " " ++ currentTag)
 
 myAdditionalKeys =
-                 [ ((myModMask, xK_p)   , (spawn "rofi -show run"))
-                 , ((myModMask, xK_Tab) , (spawn "rofi -show window"))
+                 [ ((myModMask , xK_p)      , (spawn "rofi -show run"))
+                 , ((myModMask , xK_Tab)    , (spawn "rofi -show window"))
                  , ((myModMask , xK_w)      , (spawn "rofi -show wallpaper -modi 'wallpaper:~/.config/rofi/themeswitch.sh'"))
                  , ((altMask   , xK_space)  , (spawn "rofi -show combi -combi-modi 'window,run,drun'"))
-                 , ((myModMask, xK_b)   , sendMessage ToggleStruts)
+                 , ((myModMask, xK_b)       , sendMessage ToggleStruts)
                  , ((myModMask .|. shiftMask, xK_l ) , (spawn "i3lock-fancy"))
                  -- Media
                  , ((0, xF86XK_AudioMute)        , (spawn "amixer sset Master toggle"))
