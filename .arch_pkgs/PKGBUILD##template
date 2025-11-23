@@ -10,7 +10,7 @@ install=stasiaks-base.install
 depends=(
     base base-devel linux linux-firmware
     man-db man-pages texinfo
-    sshfs fuse3 fuse2
+    sshfs fuse3 fuse2 dosfstools
     ripgrep
     acpi
     polkit pantheon-polkit-agent
@@ -35,6 +35,7 @@ depends+=(
     keepassxc gnucash
     rpi-imager
     obsidian
+    thunderbird
 )
 
 # Graphic Environment

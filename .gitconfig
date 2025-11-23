@@ -1,7 +1,7 @@
 [user]
-	email = 12955338+stasiaks@users.noreply.github.com
+	email = git@stasiaks.com
 	name = Sebastian Stasiak
-	signingkey = 6C185364F2E4DCB0
+	signingkey = 87FBB4A91E62387D
 [core]
 	editor = vim
 [alias]
