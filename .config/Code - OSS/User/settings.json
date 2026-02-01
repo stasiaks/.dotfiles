@@ -42,5 +42,6 @@
     "vim.easymotion": true,
     "vim.vimrc.enable": true,
     "files.insertFinalNewline": true,
-    "dotnet.automaticallyCreateSolutionInWorkspace": false
+    "dotnet.automaticallyCreateSolutionInWorkspace": false,
+    "haskell.serverExecutablePath": "~/.ghcup/bin/haskell-language-server-wrapper",
 }

@@ -141,9 +141,11 @@ function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    set foldmethod=expr
-      \ foldexpr=lsp#ui#vim#folding#foldexpr()
-      \ foldtext=lsp#ui#vim#folding#foldtext()
+    " Enabling folding via LSP causes severe hanging
+    " https://github.com/prabirshrestha/vim-lsp/issues/1506
+    "set foldmethod=expr
+    "  \ foldexpr=lsp#ui#vim#folding#foldexpr()
+    "  \ foldtext=lsp#ui#vim#folding#foldtext()
 
     nmap <buffer> gd <plug>(lsp-definition)
     nmap <buffer> gpd <plug>(lsp-peek-definition)
@@ -181,7 +183,10 @@ let g:lsp_settings = { 'omnisharp-lsp': { 'disabled': 1 } }
 
 "" ALE
 
-let g:ale_linters = { 'cs': ['OmniSharp'] }
+let g:ale_linters = {
+\ 'cs': ['OmniSharp'],
+\ 'haskell': []
+\}
 
 "" asyncomplete
 

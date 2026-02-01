@@ -24,6 +24,7 @@ depends+=(
     python
     nodejs npm yarn
     jdk-openjdk
+    k9s argocd
 )
 
 # Utility
@@ -31,7 +32,8 @@ depends+=(
     zip unzip
     fzf
     udiskie
-    ranger
+    ranger ueberzug
+    scrot
     keepassxc gnucash
     rpi-imager
     obsidian
