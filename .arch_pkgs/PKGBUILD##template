@@ -11,6 +11,7 @@ depends=(
     base base-devel linux linux-firmware
     man-db man-pages texinfo
     sshfs fuse3 fuse2 dosfstools
+    zsh
     ripgrep
     acpi
     polkit pantheon-polkit-agent
@@ -20,6 +21,7 @@ depends=(
 depends+=(
     git-delta bat
     gvim code
+    vim-spell-pl vim-spell-en
     clang cmake
     python
     nodejs npm yarn
@@ -46,8 +48,8 @@ depends+=(
     xorg-server xorg-xinit xorg-xrandr xorg-xsetroot
     numlockx arandr
     lemurs
-    xmonad xmonad-contrib
-    picom nitrogen devilspie wmctrl
+    openbox
+    picom feh devilspie wmctrl
     rofi
     polybar dunst
     kitty rxvt-unicode
